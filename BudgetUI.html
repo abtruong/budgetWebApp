@@ -1,0 +1,89 @@
+<!--
+Authors: Alex Truong and Kenny Chao
+Project Title: Budget Website
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Page Title</title>
+  <link rel="stylesheet" type="text/css" href="BudgetUI.css">
+  <link href="https://fonts.googleapis.com/css?family=Nixie+One|Quicksand" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Full Flex Container -->
+  <div class="fullContainer">
+
+    <!-- Column 1 -->
+    <div class="container">
+      <div class="accountOverview">
+        <h1>Account Overview</h1>
+      </div>
+      <div class="Rent">
+        <h1>Rent</h1>
+        <div>
+          <h2>Test-Box</h2>
+          <input type="number" id="cost1" placeholder="Monthly cost for rent"></input>
+        </div>
+      </div>
+      <div class="Groceries">
+        <h1>Groceries</h1>
+        <div>
+          <h2>Test-Box</h2>
+          <input type="number" id="cost2" placeholder="Monthly cost for grocercies"></input>
+        </div>
+      </div>
+      <div class="Utilities">
+        <h1>Utilities</h1>
+        <div>
+          <h2>Test-Box</h2>
+          <input type="number" id="cost3" placeholder="Monthly cost for utilities"></input>
+        </div>
+      </div>
+      <div class="Entertainment">
+        <h1>Entertainment</h1>
+        <div>
+          <h2>Test-Box</h2>
+          <input type="number" id="cost4" placeholder="Monthly cost for entertainment"></input>
+        </div>
+      </div>
+      <div class="Transportation">
+        <h1>Transportation</h1>
+        <div>
+          <h2>Test-Box</h2>
+          <input type="number" id="cost5" placeholder="Monthly cost for transportation"></input>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Column 2 -->
+    <div class="container2">
+      <div class="monthlyBudget">
+        <h1>Monthly Budget</h1>
+      </div>
+      <div class="monthlyBudgetVis">
+        <h1>Cost/Budget</h1>
+        <button id="generateCost" onclick="budgetController.getCostInfo();">Generate</button>
+        <p id="displayCost1"></p>
+        <p id="displayCost2"></p>
+        <p id="displayCost3"></p>
+        <p id="displayCost4"></p>
+        <p id="displayCost5"></p>
+        <p id="totalCost"></p>
+      </div>
+      <div class="monthlyAllocation">
+        <h1>Monthly Allocation</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript source files -->
+  <script src="BudgetModel.js"></script>
+  <script src="BudgetView.js"></script>
+  <script src="BudgetController.js"></script>
+</body>
+
+</html>

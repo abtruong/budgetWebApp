@@ -1,0 +1,144 @@
+/*
+
+Column 1
+
+ */
+
+.fullContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px;
+  border-color: #4dd2ff;
+  border-style: solid;
+  /*or font-family: 'Quicksand', sans-serif;*/
+  font-family: 'Nixie One', cursive;
+  width: 61.5%;
+}
+
+.container div {
+  border: 1px;
+  border-color: #4dd2ff;
+  border-style: solid;
+  padding: 10px;
+}
+
+.container h1 { /* Headings for rent, grocercies, utilities, etc. */
+  border: 1px;
+  border-color: #4dd2ff;
+  border-style: solid;
+  padding: 5px;
+  width: 30%;
+}
+
+.container h2 {
+  border: 1px;
+  border-color: #4dd2ff;
+  border-style: solid;
+  width: 25%;
+}
+
+.accountOverview {
+  flex: 1;
+  order: 1;
+}
+
+.accountOverview h1 {
+  width: 100%;
+  border-style: none;
+  text-align: center;
+}
+
+.Rent {
+  flex: 2;
+  order: 2;
+}
+
+.Groceries {
+  flex: 2;
+  order: 3;
+}
+.Utilities {
+  flex: 2;
+  order: 4;
+}
+.Entertainment {
+  flex: 2;
+  order: 5;
+}
+.Transportation {
+  flex: 2;
+  order: 6;
+}
+
+/*
+
+Column 2
+
+*/
+.container2 {
+  display: flex;
+  flex-direction: column;
+/*  flex-wrap: wrap; */
+  border: 1px;
+  border-color: #ff54c0;
+  border-style: solid;
+  font-family: 'Nixie One', cursive;
+  width: 38.5%;
+}
+
+.container2 div {
+  border: 1px;
+  border-color: #ff54c0;
+  border-style: solid;
+  padding: 10px;
+}
+
+.container2 h1 {
+  border: 1px;
+  border-color: #ff54c0;
+  border-style: solid;
+  padding: 5px;
+  width: 35%;
+}
+
+.container2 h2 {
+  border: 1px;
+  border-color: #ff54c0;
+  border-style: solid;
+  width: 30%;
+}
+
+.monthlyBudget {
+  flex: 1;
+  order: 1;
+}
+
+.monthlyBudget h1 {
+  width: 100%;
+  border-style: none;
+  text-align: center;
+}
+
+.monthlyBudgetVis {
+  flex: 3;
+  order: 2;
+}
+
+.monthlyAllocation {
+  flex: 3;
+  order: 3;
+}
+
+input {
+  font-family: 'Nixie One', cursive;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
