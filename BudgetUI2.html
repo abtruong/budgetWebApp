@@ -75,11 +75,11 @@ Project Title: Budget Website
         <p id="totalCost"></p>
       </div>
       <div class="monthlyAllocation">
-        <h1>Monthly Allocation</h1>
         <p id="piechart"></p>
       </div>
     </div>
   </div>
+
 
   <!-- JavaScript source files -->
   <script src="JavaScript/BudgetModel.js"></script>
@@ -98,7 +98,7 @@ Project Title: Budget Website
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
     ['Categories', 'Cost per month'],
-    ['Rent', 1500],
+    ['Rent', 1000],
     ['Groceries', 250],
     ['Utilities', 100],
     ['Entertainment', 100],
@@ -107,9 +107,20 @@ Project Title: Budget Website
 
     // Optional; add a title and set the width and height of the chart
     var options = {
-    'title':'Budget Allocation',
-    'width': 500,
-    'height': 400,
+    'title':'Monthly Allocation (Costs)',
+    titleTextStyle: {
+      fontSize: 20,
+      fontName: 'Nixie One'
+    },
+    legend: {
+      textStyle: {
+        fontName: 'Nixie One',
+        bold: true
+      }
+    },
+    'width': 650,
+    'height': 700,
+    backgroundColor: 'transparent',
     'colors': ['#ff706b', '#f56bff', '#f957ff','#69afff', '#6bc9ff']
     };
 

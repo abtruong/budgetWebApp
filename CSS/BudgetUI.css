@@ -99,10 +99,15 @@ Column 2
   padding: 10px;
 }
 
+.container2 .monthlyAllocation div{
+  border-style: none;
+  background-color: none;
+}
+
 .container2 h1 {
   border: 1px;
   border-color: #ff54c0;
-  border-style: solid;
+  border-style: none;
   padding: 5px;
   width: 35%;
 }
@@ -141,4 +146,9 @@ input {
   color: black;
   background-color: white;
   padding: 10px;
+}
+
+#piechart {
+  border-style: none;
+  border-color: none;
 }
