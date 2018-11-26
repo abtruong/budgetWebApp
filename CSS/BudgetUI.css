@@ -16,7 +16,7 @@ Column 1
   /*border: 1px;*/
   border-image: linear-gradient(to right, #65CBED 0%, /*#4dd2ff*/#B633FF 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
   /*or font-family: 'Quicksand', sans-serif;*/
@@ -28,7 +28,7 @@ Column 1
   /*border: 1px;*/
   border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
   padding: 10px;
@@ -38,7 +38,7 @@ Column 1
   /*border: 1px;*/
   border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
   padding: 5px;
@@ -49,7 +49,7 @@ Column 1
   /*border: 1px;*/
   border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width: 2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
   width: 25%;
@@ -99,7 +99,7 @@ Column 2
 /*  flex-wrap: wrap; */
   border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width: 2px 2px 2px 1px;
   border-style: solid;
   font-family: 'Nixie One', cursive;
   width: 38.5%;
@@ -108,7 +108,7 @@ Column 2
 .container2 div {
   border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width: 2px 2px 2px 1px;
   border-style: solid;
   padding: 10px;
 }
@@ -121,7 +121,7 @@ Column 2
 .container2 h1 {
   border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width: 2px 2px 2px 1px;
   padding: 5px;
   width: 35%;
 }
@@ -129,7 +129,7 @@ Column 2
 .container2 h2 {
   border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
   border-image-slice: 1;
-  border-width: 1.5px;
+  border-width: 2px 2px 2px 1px;
   border-style: solid;
   width: 30%;
 }
