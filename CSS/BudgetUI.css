@@ -167,3 +167,20 @@ input {
   border-style: none;
   border-color: none;
 }
+
+button {
+  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;
+  border-width: 1.5px;
+  border-style: solid;
+  background-color: rgba(224, 224, 224, .25);
+  font-family: 'Nixie One', cursive;
+  font-weight: bold;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
