@@ -94,14 +94,15 @@ Project Title: Budget Website
   google.charts.setOnLoadCallback(drawChart);
 
   // Draw the chart and set the chart values
+  // Note: Percentage value will only show if >= 20%
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
     ['Task', 'Hours per Day'],
-    ['Rent', 8],
-    ['Groceries', 3],
+    ['Rent', 1],
+    ['Groceries', 2],
     ['Utilities', 2],
-    ['Entertainment', 3],
-    ['Transportation', 4]
+    ['Entertainment', 2],
+    ['Transportation', 2]
   ]);
 
     // Optional; add a title and set the width and height of the chart
@@ -118,6 +119,5 @@ Project Title: Budget Website
   }
   </script>
 </body>
-lkjkjl
 
 </html>
