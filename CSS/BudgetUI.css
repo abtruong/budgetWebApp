@@ -156,6 +156,9 @@ Column 2
 }
 
 input {
+  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;
+  border-width: 1px;
   font-family: 'Nixie One', cursive;
   font-weight: bold;
   color: black;
