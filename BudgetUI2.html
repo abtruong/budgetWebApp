@@ -26,35 +26,35 @@ Project Title: Budget Website
         <h1>Rent</h1>
         <div>
           <h2>Test-Box</h2>
-          <input type="number" id="cost1" placeholder="Monthly cost for rent"></input>
+          <input type="number" id="cost1" placeholder="Monthly cost for rent">
         </div>
       </div>
       <div class="Groceries">
         <h1>Groceries</h1>
         <div>
           <h2>Test-Box</h2>
-          <input type="number" id="cost2" placeholder="Monthly cost for grocercies"></input>
+          <input type="number" id="cost2" placeholder="Monthly cost for grocercies">
         </div>
       </div>
       <div class="Utilities">
         <h1>Utilities</h1>
         <div>
           <h2>Test-Box</h2>
-          <input type="number" id="cost3" placeholder="Monthly cost for utilities"></input>
+          <input type="number" id="cost3" placeholder="Monthly cost for utilities">
         </div>
       </div>
       <div class="Entertainment">
         <h1>Entertainment</h1>
         <div>
           <h2>Test-Box</h2>
-          <input type="number" id="cost4" placeholder="Monthly cost for entertainment"></input>
+          <input type="number" id="cost4" placeholder="Monthly cost for entertainment">
         </div>
       </div>
       <div class="Transportation">
         <h1>Transportation</h1>
         <div>
           <h2>Test-Box</h2>
-          <input type="number" id="cost5" placeholder="Monthly cost for transportation"></input>
+          <input type="number" id="cost5" placeholder="Monthly cost for transportation">
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@ Project Title: Budget Website
       </div>
       <div class="monthlyBudgetVis">
         <h1>Cost/Budget</h1>
-        <button id="generateCost" onclick="budgetController.getCostInfo();">Generate</button>
+        <button id="generateCost" onclick="budgetController.getCostInfo(); drawChart();">Generate</button>
         <p id="displayCost1"></p>
         <p id="displayCost2"></p>
         <p id="displayCost3"></p>
@@ -80,13 +80,17 @@ Project Title: Budget Website
     </div>
   </div>
 
+  <div id="chart">
+
+  </div>
+
 
   <!-- JavaScript source files -->
   <script src="JavaScript/BudgetModel.js"></script>
   <script src="JavaScript/BudgetView.js"></script>
   <script src="JavaScript/BudgetController.js"></script>
-
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="JavaScript/BudgetChart.js"></script>
 
   <script type="text/javascript">
   // Load google charts
@@ -96,14 +100,20 @@ Project Title: Budget Website
   // Draw the chart and set the chart values
   // Note: Percentage value shows depending on if text can fit on slice
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Categories', 'Cost per month'],
-    ['Rent', 1000],
-    ['Groceries', 250],
-    ['Utilities', 100],
-    ['Entertainment', 100],
-    ['Transportation', 200]
-  ]);
+    var testData = budgetModel.getCostList();
+
+    console.log(testData);
+
+    for (i = 0; i < testData.length; i++) {
+      var data = google.visualization.arrayToDataTable([
+        ['Categories', 'Cost per month'],
+        ['Rent', testData[0].cost],
+        ['Groceries', testData[1].cost],
+        ['Utilities', testData[2].cost],
+        ['Entertainment', testData[3].cost],
+        ['Transportation', testData[4].cost]
+      ]);
+    }
 
     // Optional; add a title and set the width and height of the chart
     var options = {

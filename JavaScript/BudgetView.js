@@ -5,7 +5,6 @@ var budgetView = (function () {
         
         var totalCost = 0;
         var costList = budgetModel.getCostList();
-        var budgetList = budgetModel.getBudgetList();
 
         for (i = 0; i < costList.length; i++) {
 

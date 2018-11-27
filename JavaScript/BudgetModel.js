@@ -16,25 +16,69 @@ var budgetModel = (function () {
         for the total cost. Maybe implement
         this into a function.
     */
+
+    var budget = 0;
+
+    /*
+        This right here
+
+        costList would be size 1 as the base case
+
+        costList = [firstObject]
+
+        When the user hits a + sign:
+            costList = [firstObject, secondObject]
+    */
+
     var costList = [
-        { id: "cost1", cost: 0, finalCost: 0 },
-        { id: "cost2", cost: 0, finalCost: 0 },
-        { id: "cost3", cost: 0, finalCost: 0 },
-        { id: "cost4", cost: 0, finalCost: 0 },
-        { id: "cost5", cost: 0, finalCost: 0 }
+        { id: "<placeholder>", cost: 0 },
+        // { id: "cost2", cost: 0, finalCost: 0 },
+        // { id: "cost3", cost: 0, finalCost: 0 },
+        // { id: "cost4", cost: 0, finalCost: 0 },
+        // { id: "cost5", cost: 0, finalCost: 0 }
     ];
+
+    // Add a new budget field to the form when clicking the + button
+    var addBudgetField = function() {
+        costList.push(
+            { id: "<placeholder>", cost: 0 }
+        )
+    }
+
+    // Change the name of the field we are budgeting
+    // Passing in data from the BudgetView.js
+    var changeBudgetName = function(previousBudgetName, newBudgetName) {
+        if (previousBudgetName == newBudgetName) {
+            return
+        }
+        for (i = 0; i < costList.length; i++) {
+            if (costList[i].id == previousBudgetName) {
+                costList[i].id = newBudgetName
+            }
+        }
+    }
+
+    // Update the cost of the field we are budgeting
+    // Passing in data from the BudgetView.js
+    var updateBudgetCost = function(budgetName, newCost) {
+        for (i = 0; i < costList.length; i++) {
+            if (costList[i].id == budgetName) {
+                costList[i].cost = newCost;
+            }
+        }
+    }
 
     var getCostList = function () {
         return costList;
     };
 
-    var getBudgetList = function () {
-        return budgetList;
-    }
+    var getBudget = function () {
+        return budget;
+    };
 
     return {
-        getCostList: getCostList,
-        getBudgetList: getBudgetList
+        getBudget: getBudget,
+        getCostList: getCostList
     }
 
 })();
