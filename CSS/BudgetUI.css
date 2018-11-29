@@ -3,6 +3,9 @@
 Column 1
 
  */
+html {
+  font-size: 1vw;
+}
 
 .fullContainer {
   display: flex;
@@ -14,20 +17,23 @@ Column 1
   flex-direction: column;
   flex-wrap: wrap;
   /*border: 1px;*/
-  border-image: linear-gradient(to right, #65CBED 0%, /*#4dd2ff*/#B633FF 100%);
-  border-image-slice: 1;
+  /*
+  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
   /*or font-family: 'Quicksand', sans-serif;*/
   font-family: 'Nixie One', cursive;
-  width: 61.5%;
+  width: 50%;
 }
 
 .container div {
   /*border: 1px;*/
-  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
@@ -36,19 +42,22 @@ Column 1
 
 .container h1 { /* Headings for rent, grocercies, utilities, etc. */
   /*border: 1px;*/
-  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width:  2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
-  border-style: solid;
+  border-style: none;
   padding: 5px;
   width: 30%;
 }
 
 .container h2 {
   /*border: 1px;*/
-  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;*/
+  padding: 5px;
+  border-color: black;
   border-width: 2px 1px 2px 2px;
   /*border-color: #4dd2ff;*/
   border-style: solid;
@@ -56,7 +65,7 @@ Column 1
 }
 
 .accountOverview {
-  flex: 1;
+  flex: 1 1 0;
   order: 1;
 }
 
@@ -67,24 +76,24 @@ Column 1
 }
 
 .Rent {
-  flex: 2;
+  flex: 1 1 0;
   order: 2;
 }
 
 .Groceries {
-  flex: 2;
+  flex: 1 1 0;
   order: 3;
 }
 .Utilities {
-  flex: 2;
+  flex: 1 1 0;
   order: 4;
 }
 .Entertainment {
-  flex: 2;
+  flex: 1 1 0;
   order: 5;
 }
 .Transportation {
-  flex: 2;
+  flex: 1 1 0;
   order: 6;
 }
 
@@ -97,17 +106,19 @@ Column 2
   display: flex;
   flex-direction: column;
 /*  flex-wrap: wrap; */
-  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width: 2px 2px 2px 1px;
   border-style: solid;
   font-family: 'Nixie One', cursive;
-  width: 38.5%;
+  width: 50%;
 }
 
 .container2 div {
-  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width: 2px 2px 2px 1px;
   border-style: solid;
   padding: 10px;
@@ -119,23 +130,25 @@ Column 2
 }
 
 .container2 h1 {
-  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width: 2px 2px 2px 1px;
   padding: 5px;
   width: 35%;
 }
 
 .container2 h2 {
-  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width: 2px 2px 2px 1px;
   border-style: solid;
   width: 30%;
 }
 
 .monthlyBudget {
-  flex: 1;
+  flex: .166667;
   order: 1;
 }
 
@@ -146,19 +159,22 @@ Column 2
 }
 
 .monthlyBudgetVis {
-  flex: 3;
+  flex: 1 1 0;
   order: 2;
 }
 
 .monthlyAllocation {
-  flex: 3;
+  flex: 1 1 0;
   order: 3;
 }
 
 input {
-  border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #65CBED 0%, #B633FF 100%);
+  border-image-slice: 1;*/
+  font-size: 1vw;
+  border-color: black;
   border-width: 1px;
+  box-sizing: border-box;
   font-family: 'Nixie One', cursive;
   font-weight: bold;
   color: black;
@@ -172,8 +188,9 @@ input {
 }
 
 button {
-  border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
-  border-image-slice: 1;
+  /*border-image: linear-gradient(to right, #ff54c0 0%, #3EFDA6 100%);
+  border-image-slice: 1;*/
+  border-color: black;
   border-width: 1.5px;
   border-style: solid;
   background-color: rgba(224, 224, 224, .25);
@@ -184,6 +201,6 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 2vw;
   margin: 4px 2px;
 }
