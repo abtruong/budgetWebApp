@@ -66,7 +66,7 @@ Project Title: Budget Website
       </div>
       <div class="monthlyBudgetVis">
         <h1>Cost/Budget</h1>
-        <button id="generateCost" onclick="budgetController.getCostInfo(); budget">Generate</button>
+        <button id="generateCost" onclick="budgetController.getCostInfo(); drawChart();">Generate</button>
         <p id="displayCost1"></p>
         <p id="displayCost2"></p>
         <p id="displayCost3"></p>
@@ -75,7 +75,7 @@ Project Title: Budget Website
         <p id="totalCost"></p>
       </div>
       <div class="monthlyAllocation">
-        <h1>Monthly Allocation</h1>
+        <p id="piechart"></p>
       </div>
     </div>
   </div>
@@ -84,6 +84,56 @@ Project Title: Budget Website
   <script src="JavaScript/BudgetModel.js"></script>
   <script src="JavaScript/BudgetView.js"></script>
   <script src="JavaScript/BudgetController.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="JavaScript/BudgetChart.js"></script>
+
+  <script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Draw the chart and set the chart values
+  // Note: Percentage value shows depending on if text can fit on slice
+  function drawChart() {
+    var testData = budgetModel.getCostList();
+
+    console.log(testData);
+
+    for (i = 0; i < testData.length; i++) {
+      var data = google.visualization.arrayToDataTable([
+        ['Categories', 'Cost per month'],
+        ['Rent', testData[0].cost],
+        ['Groceries', testData[1].cost],
+        ['Utilities', testData[2].cost],
+        ['Entertainment', testData[3].cost],
+        ['Transportation', testData[4].cost]
+      ]);
+    }
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {
+    'title':'Monthly Allocation (Costs)',
+    titleTextStyle: {
+      fontSize: 20,
+      fontName: 'Nixie One'
+    },
+    legend: {
+      textStyle: {
+        fontName: 'Nixie One',
+        bold: true
+      }
+    },
+    'width': 650,
+    'height': 700,
+    backgroundColor: 'transparent',
+    'colors': ['#ff706b', '#f56bff', '#f957ff','#69afff', '#6bc9ff']
+    };
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  </script>
 </body>
 
 </html>
