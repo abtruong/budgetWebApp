@@ -32,10 +32,10 @@ var budgetModel = (function () {
 
     var costList = [
         { id: "<placeholder>", cost: 0 },
-        // { id: "cost2", cost: 0, finalCost: 0 },
-        // { id: "cost3", cost: 0, finalCost: 0 },
-        // { id: "cost4", cost: 0, finalCost: 0 },
-        // { id: "cost5", cost: 0, finalCost: 0 }
+        { id: "cost2", cost: 0, finalCost: 0 },
+        { id: "cost3", cost: 0, finalCost: 0 },
+        { id: "cost4", cost: 0, finalCost: 0 },
+        { id: "cost5", cost: 0, finalCost: 0 }
     ];
 
     // Add a new budget field to the form when clicking the + button
