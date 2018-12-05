@@ -16,8 +16,9 @@ var budgetView = (function () {
             var costInput = document.getElementById(cString).value;
 
             var rgx = new RegExp("^[0-9]{1,5}\.[0-9]{2}$")
-            if (nameInput == NaN) {
+            if (nameInput == "") {
                 alert("Subject Field " + (i + 1).toString() + " is empty. Please enter a name.")
+                return;
             }
             if (rgx.test(costInput) != true) {
                 alert("Cost Field " + (i + 1).toString() + " is in the incorrect format. Please use format \"0.00\"")
@@ -30,7 +31,7 @@ var budgetView = (function () {
             totalCost += parseFloat(costInput);
         }
 
-        var accSum = "Expense Total:" + "<br/><br/>$" + totalCost.toString();
+        var accSum = "Expense Total:" + "<br/><br/>$" + (totalCost.toFixed(2)).toString();
         var output = "";
 
         budgetModel.updateLeftoverBudget(budget - totalCost);
@@ -50,12 +51,13 @@ var budgetView = (function () {
             exceeded = false;
             budgetModel.didExceedBudget(exceeded)
         }
-
-        budgetGoogleChart.testing();
         
+        budgetGoogleChart.testing();
         document.getElementById("accountSummary").className = "centerText";
         document.getElementById("totalCost").innerHTML = accSum;
         document.getElementById("overOrUnder").innerHTML = output;
+  
+            
     };
 
     return {
