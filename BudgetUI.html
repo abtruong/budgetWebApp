@@ -6,134 +6,77 @@ Project Title: Budget Website
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Page Title</title>
-  <link rel="stylesheet" type="text/css" href="CSS/BudgetUI.css">
-  <link href="https://fonts.googleapis.com/css?family=Nixie+One|Quicksand" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="CSS/BudgetUI.css">
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One|Quicksand" rel="stylesheet">
 </head>
 
 <body>
-
-  <!-- Full Flex Container -->
-  <div class="fullContainer">
-
-    <!-- Column 1 -->
-    <div class="container">
-      <div class="accountOverview">
-        <h1>Account Overview</h1>
-      </div>
-      <div class="Rent">
-        <h1>Rent</h1>
-        <div>
-          <h2>Test-Box</h2>
-          <input type="number" id="cost1" placeholder="Monthly cost for rent"></input>
+    <div class="flex">
+        <div class="centerText">
+            <p>Account Overview</p>
         </div>
-      </div>
-      <div class="Groceries">
-        <h1>Groceries</h1>
-        <div>
-          <h2>Test-Box</h2>
-          <input type="number" id="cost2" placeholder="Monthly cost for grocercies"></input>
-        </div>
-      </div>
-      <div class="Utilities">
-        <h1>Utilities</h1>
-        <div>
-          <h2>Test-Box</h2>
-          <input type="number" id="cost3" placeholder="Monthly cost for utilities"></input>
-        </div>
-      </div>
-      <div class="Entertainment">
-        <h1>Entertainment</h1>
-        <div>
-          <h2>Test-Box</h2>
-          <input type="number" id="cost4" placeholder="Monthly cost for entertainment"></input>
-        </div>
-      </div>
-      <div class="Transportation">
-        <h1>Transportation</h1>
-        <div>
-          <h2>Test-Box</h2>
-          <input type="number" id="cost5" placeholder="Monthly cost for transportation"></input>
-        </div>
-      </div>
     </div>
+
+    <div class="flex">
+        <div class="centerText">
+            <p>Overall budget:</p>
+            <input class="budgetInput" type="text" id="budgetField" placeholder="0.00"><br/>
+            <button id="generate" onclick="budgetController.getCostInfo(); budgetGoogleChart.testing();">Generate</button>
+            <button id="addRow" onclick="budgetController.addButton();">+</button>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="centerText">
+            <table class="tableLayout" id="inputTable">
+                <tr>
+                    <td class="noTopBorder">
+                        <p class="leftAlign">Subject:</p>
+                        <input class="rowInputs" type="text" id="rowName1" placeholder="Enter Name Here">
+                        <p class="leftAlign">Cost:</p>
+                        <input class="rowInputs costInput" type="text" id="rowCost1" placeholder="0.00">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="leftAlign">Subject:</p>
+                        <input class="rowInputs" type="text" id="rowName2">
+                        <p class="leftAlign">Cost:</p>
+                        <input class="rowInputs costInput" type="text" id="rowCost2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="leftAlign">Subject:</p>
+                        <input class="rowInputs" type="text" id="rowName3">
+                        <p class="leftAlign">Cost:</p>
+                        <input class="rowInputs costInput" type="text" id="rowCost3">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="flex">
+        <div id="accountSummary">
+            <p id="totalCost"></p>
+            <p id="overOrUnder"></p>
+        </div>
+    </div>
+    <div class="flex">
+        <div id="googleChartBox">
+            <p id="chart"></p>
+        </div>
+    </div>
+
+    <script src="JavaScript/BudgetModel.js"></script>
+    <script src="JavaScript/BudgetView.js"></script>
+    <script src="JavaScript/BudgetController.js"></script>
+    <script src="JavaScript/BudgetGoogleChart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     
-    <!-- Column 2 -->
-    <div class="container2">
-      <div class="monthlyBudget">
-        <h1>Monthly Budget</h1>
-      </div>
-      <div class="monthlyBudgetVis">
-        <h1>Cost/Budget</h1>
-        <button id="generateCost" onclick="budgetController.getCostInfo(); drawChart();">Generate</button>
-        <p id="displayCost1"></p>
-        <p id="displayCost2"></p>
-        <p id="displayCost3"></p>
-        <p id="displayCost4"></p>
-        <p id="displayCost5"></p>
-        <p id="totalCost"></p>
-      </div>
-      <div class="monthlyAllocation">
-        <p id="piechart"></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript source files -->
-  <script src="JavaScript/BudgetModel.js"></script>
-  <script src="JavaScript/BudgetView.js"></script>
-  <script src="JavaScript/BudgetController.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="JavaScript/BudgetChart.js"></script>
-
-  <script type="text/javascript">
-  // Load google charts
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-
-  // Draw the chart and set the chart values
-  // Note: Percentage value shows depending on if text can fit on slice
-  function drawChart() {
-    var testData = budgetModel.getCostList();
-
-    console.log(testData);
-
-    for (i = 0; i < testData.length; i++) {
-      var data = google.visualization.arrayToDataTable([
-        ['Categories', 'Cost per month'],
-        ['Rent', testData[0].cost],
-        ['Groceries', testData[1].cost],
-        ['Utilities', testData[2].cost],
-        ['Entertainment', testData[3].cost],
-        ['Transportation', testData[4].cost]
-      ]);
-    }
-
-    // Optional; add a title and set the width and height of the chart
-    var options = {
-    'title':'Monthly Allocation (Costs)',
-    titleTextStyle: {
-      fontSize: 20,
-      fontName: 'Nixie One'
-    },
-    legend: {
-      textStyle: {
-        fontName: 'Nixie One',
-        bold: true
-      }
-    },
-    'width': 650,
-    'height': 700,
-    backgroundColor: 'transparent',
-    'colors': ['#ff706b', '#f56bff', '#f957ff','#69afff', '#6bc9ff']
-    };
-
-    // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-    chart.draw(data, options);
-  }
-  </script>
 </body>
 
 </html>

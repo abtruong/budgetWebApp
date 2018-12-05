@@ -2,46 +2,61 @@ var budgetView = (function () {
 
     // Function grabs the list of costs from the Budget Model JS
     var obtainCostAndBudgetInfo = function() {
-        
-        var totalCost = 0;
+
+        var budget = document.getElementById("budgetField").value;
         var costList = budgetModel.getCostList();
+        var totalCost = 0;
 
         for (i = 0; i < costList.length; i++) {
 
-            var cString = "cost" + (i + 1).toString();
+            var nString = "rowName" + (i + 1).toString();
+            var cString = "rowCost" + (i + 1).toString();
 
+            var nameInput = document.getElementById(nString).value;
             var costInput = document.getElementById(cString).value;
 
-            // DO REGEX CHECK HERE
-            // IF costInput is in the same format AS:
-            // ^[0-9]{1,5}\.[0-9][0-9]$ --> THEN:
-
-            var rgx = new RegExp('^[0-9]{1,5}\.[0-9]{2}$')
-
+            var rgx = new RegExp("^[0-9]{1,5}\.[0-9]{2}$")
+            if (nameInput == NaN) {
+                alert("Subject Field " + (i + 1).toString() + " is empty. Please enter a name.")
+            }
             if (rgx.test(costInput) != true) {
-                alert("Text Field " + (i + 1).toString() + " is in the incorrect format.")
+                alert("Cost Field " + (i + 1).toString() + " is in the incorrect format. Please use format \"0.00\"")
+                return;
             }
 
-            costList[i].cost = parseFloat(costInput)
-            console.log(costList[i]);
+            costList[i].id = nameInput;
+            costList[i].cost = parseFloat(costInput);
 
+            totalCost += parseFloat(costInput);
         }
-        
-        for (i = 0; i < costList.length; i++) {
 
-            var cString = "displayCost" + (i + 1).toString();
+        var accSum = "Expense Total:" + "<br/><br/>$" + totalCost.toString();
+        var output = "";
 
-            totalCost += costList[i].cost;
-            
-            document.getElementById(cString.toString()).innerHTML = costList[i].cost;
+        budgetModel.updateLeftoverBudget(budget - totalCost);
+
+        if (budget < totalCost) {
+            output = "You've exceeded your budget by $" + ((Math.abs(budget - totalCost)).toFixed(2)).toString() + "!";
+            document.getElementById("overOrUnder").style.color = "#c44444"
+            exceeded = true;
+            budgetModel.didExceedBudget(exceeded);
+        } else if (budget == totalCost) {
+            output = "You matched your exact budget.";
+            exceeded = false;
+            budgetModel.didExceedBudget(exceeded)
+        } else {
+            output = "You have $" + ((budget - totalCost).toFixed(2)).toString() + " left to spare."
+            document.getElementById("overOrUnder").style.color = "#57d170"
+            exceeded = false;
+            budgetModel.didExceedBudget(exceeded)
         }
-        
-        document.getElementById("totalCost").innerHTML = totalCost;
 
-        console.log("total cost is ", totalCost);
+        budgetGoogleChart.testing();
+        
+        document.getElementById("accountSummary").className = "centerText";
+        document.getElementById("totalCost").innerHTML = accSum;
+        document.getElementById("overOrUnder").innerHTML = output;
     };
-
-    
 
     return {
         obtainCostAndBudgetInfo: obtainCostAndBudgetInfo
