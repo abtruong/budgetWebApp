@@ -16,6 +16,8 @@ _*Side Note: no framework is used as this application is constructed purely thro
 
 4) Visualizing User Data
 
+5) Full Implementation and Architecture
+
 ****
 
 **Objective 1: Designing the System**
@@ -26,13 +28,13 @@ In the initial stages of designing the layout we had to consider the following q
 1) How do we want users to complete tasks?
 2) What are the pros and cons of the user's journey through our application?
 
-To answer the first question we had to determine the requirements users needed in order to operate the system. First and foremost, our application required users to directly interact with the interface such as entering in expenses using a keyboard and clicking buttons. Second, users needed to scroll downwards and upwards to complete the form and to generate their total expenses and cost visualization. These main functionalities became the focus of our design process.   
+To answer the first question we had to determine the requirements users needed in order to operate the system. First and foremost, our application required users to directly interact with the interface such as entering in expenses using a keyboard and clicking buttons. Second, users needed to scroll downwards and upwards to complete the form and to generate their total expenses and cost visualization. These main functionalities became the focus of our design process.
 
 Keeping the main functionalities in mind we structured the webpage into 2 columns. The reason behind this decision was based on breaking up the interactivity into two seperate actions. One column would be responsible for handling keyboard strokes and the one column would be responsible for handling button clicks. We decided this layout would make the flow of interactivity more consistent and fluid. In other words, we wanted users to focus of customizing their budget first before generating the final results and data visualization. 
 
 _**Pros and Cons of Initial Draft**_
 
-Upon completion of implementing our initial design we discovered what elements and functionalities worked/ didn't worked. Although our layout was simplistic and easy to use we ran into problems when the user would generate several sections. This made our webpage looked cluttered and claustrophobic. A simplified list of the advantages and disadvantages is placed below:
+Upon completion of implementing our initial design we discovered what elements and functionalities worked/ didn't worked. Although our layout was simplistic and easy to use we ran into problems when the user would generate several sections. This made our webpage looked cluttered and claustrophobic. Also, our color scheme did not serve any purpose other than to make the application look pretty. The color scheme conflicted with functionality, therefore, we decided to make the webpage monotonic. A simplified list of the advantages and disadvantages is placed below:
 
 Advantages:
 
@@ -59,7 +61,7 @@ Performance: This sub-objective corresponds to how efficient our webpage loads. 
 
 **Objective 2: Creating a Responsive Layout**
 
-The application's layout was designed with consideration for window resizing. To make sure that the application would respond to changing views, we decided to uses vm to allow for automatic changes upon resizing. By design the user must scroll downwards to access the bottom half of the page. The reason for this design is for a better viewing angle and less collisions with other elements for smaller windows.
+The application's layout was designed with consideration for window resizing. To make sure that the application would respond to changing views, we decided to uses vm to allow for automatic changes upon resizing. By design the user must scroll downwards to access the bottom half of the page. The reason for this design is for a better viewing angle and less collisions with other elements for smaller windows. One problem we ran into was the responsiveness of the charts generated from Google Charts API. The API allows use to customized graphs and charts to a certain degree
 
 ****
 
@@ -83,7 +85,7 @@ _**Main Functionalities (Elaborated)**_
 
 2) _**Input Storage**_ - The user's input for both the subject and cost fields will be saved into the JavaScript model. The model will store this information during the session to output to the webpage after being invoked by both the controller and the view files.
 
-3) _**Input Calculation**_ - All cost input field values will be added together. The summed value will be compared to the user's budget input. 
+3) _**Input Calculation**_ - All cost input field values will be added together. The summed value will be compared to the user's budget input. The inputs are all treated as floating point values to properly follow the format of USD currency.
 
 4) _**Outputting to Webpage**_ - Once the user has clicked the "Generate" button, the total calculation will be displayed to the user underneath the table where the user can input information. Depending on whether the budget was met, excess, or matched, it will prompt the user the state of their budgeting.
 
@@ -103,19 +105,48 @@ _**Google Charts**_ - This is an API created by Google that specializes in custo
 
 ****
 
-**Implementation**
+**Objective 5: Full Implementation and Architecture**
 
-All implementation is provided on GitHub via URL:
+_**Implementation**_
+
+All implementation is provided on GitHub. Please review the code via URL:
 
 ```
-** https://github.com/Kchao1910/BudgetAppUI **
+https://github.com/Kchao1910/BudgetAppUI
 ```
+
+_**Architecture**_
+
+This application is solely client-side based and does not feature any server-side functionalities. The 3 languages used are HTML, CSS, and JavaScript. There is no JavaScript framework associated with this Web application and all dynamic features are done purely by JavaScript.
+
+* **HTML** - A basic HTML file formats the layout for the application. The HTML provides the foundation of how the Webpage will be presented to the user. The foundation is templated using multiple flexboxes to keep each container formatted properly. This allows for the architecture to be uniform without the use of any other templates or frameworks. The following elements are heavily used:
+  * Divs
+  * Tables
+  * Input Fields
+  * Buttons
+
+* **CSS** - Allows the HTML to be stylized. It provides the necessary styling to make the Web application look like a proper Web budgeting application. The focus on the styling of the Web application was centered around keeping a nice, discrete background that was not distracting to the user while providing a minimalistic interface for ease of use. The font for all cost-related input fields are set to "Courier" and the rest of the template uses "Nixie One" for a more-uniform visual.
+
+* **JavaScript** - Following the basic layout of the Model-View-Controller, three JavaScript files are provided to follow the JavaScript DOM model. This allows for encapsulation of data, keeping sensitive information away from the user and preventing access to sensitive information. This web application includes a model, view, and controller JavaScript file including one additional JavaScript file implementing the Google Charts' API script:
+
+  * BudgetModel.js: Responsible for storing the current user's budgeting information in the current session. As the model file for the JavaScript, all data stored in this file cannot be accessed directly by the user and the information stored here is updated through the BudgetView.js.
+  
+  * BudgetView.js: Allows for dynamic responses to user's actions when an event has occurred. Invoked by the BudgetController.js file, the view updates the HTML Web application in response to any events triggered. It displays new information to the user, such as additional text boxes, pop-up messages, or the Google pie chart via Google's API. If any of the input fields are empty, an alert message will be invoked and displayed to the user, prompting the user to fill in any of the missing fields, and will not store any of that information into the BudgetModel.js file.
+
+  * BudgetController.js: Invoked by an actual event triggered on the HTML Web application by the user. This file allows the HTML file to communicate with the JavaScript files linked to the HTML Web application. When an event is triggered, this JavaScript invokes methods implemented in the BudgetView.js and links the response to the events to these methods.
+
+  * BudgetGoogleChart.js: JavaScript to invoke Google's pie chart API. This script is secluded from the BudgetModel.js file to further encapsulate how the pie chart works. The method implemented in this file is called from the BudgetView.js file at the end to display the necessary information gathering data from the BudgetModel.js after being updated with the user's input.
 
 ****
 
-**Architecture**
+**Closing Notes**
 
-This application is solely client-side based and does not feature any server-side functionalities. The 3 languages used are HTML, CSS, and JavaScript.
+This project is always open to suggestions and we would like to improve on any parts of the application. If you have any suggestions, please provide any feedback at:
 
-* HTML: A basic HTML file formats the layout for the application. The HTML provides the foundation of how the Webpage will be presented to the user. 
+```
+alexbt1992@icloud.com
+```
+
+Thank you for using our web application!
+
 ****
